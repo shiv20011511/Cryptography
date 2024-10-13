@@ -1,0 +1,27 @@
+*{
+-fx-background-color:"WHITE";
+}
+
+.button:hover{
+-fx-background-color:"orange";
+-fx-text-fill:"black";
+}
+
+.text-field{
+-fx-text-fill:"Green";
+-fx-background-color: "black";
+
+
+}
+
+.text-field:focused {
+    -fx-background-color: #e0e0e0;
+}
+
+#warn{
+-fx-text-fill:"Red";
+}
+
+#namelabel{
+-fx-text-fill:"Green";
+}

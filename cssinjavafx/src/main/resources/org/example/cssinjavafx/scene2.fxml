@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.AmbientLight?>
+<?import javafx.scene.PointLight?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.cssinjavafx.scene2Controller">
+   <children>
+      <Label alignment="CENTER" layoutX="3.0" layoutY="2.0" prefHeight="90.0" prefWidth="690.0" text="Why You Need Hustler's Task Nest" textFill="#6e0a0a">
+         <font>
+            <Font name="Berlin Sans FB" size="47.0" />
+         </font>
+      </Label>
+      <TextArea editable="false" layoutY="138.0" prefHeight="290.0" prefWidth="690.0" text="  Productivity compounds. Accomplishing one extra task is a small feat on any given &#10;day, but it counts for a lot over an  entire career. The effect of automating an old &#10;task or  mastering a new skill can be even greater. &#10;&#10;&quot;The more tasks you can handle without thinking, the more your brain is free &#10;to focus on other areas.&quot;">
+         <font>
+            <Font name="Bodoni MT Condensed" size="28.0" />
+         </font>
+      </TextArea>
+      <AmbientLight layoutX="14.0" layoutY="157.0" lightOn="true">
+         <color>
+            <Color red="0.5035672783851624" green="0.8315789699554443" blue="0.17555555701255798" />
+         </color>
+      </AmbientLight>
+      <AmbientLight layoutX="13.0" layoutY="141.0" lightOn="true">
+         <color>
+            <Color red="0.5131579041481018" green="0.8526315689086914" blue="0.17368420958518982" />
+         </color>
+      </AmbientLight>
+      <PointLight layoutX="15.0" layoutY="92.0" lightOn="true">
+         <color>
+            <Color red="1.0" blue="0.8946700692176819" />
+         </color>
+      </PointLight>
+      <PointLight layoutX="745.0" layoutY="92.0">
+         <color>
+            <Color red="0.46315789222717285" green="0.9263157844543457" blue="0.8028070330619812" />
+         </color>
+      </PointLight>
+      <Circle fill="#1fff41" layoutX="15.0" layoutY="146.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button layoutX="221.0" layoutY="499.0" mnemonicParsing="false" onAction="#SwitchToScene1" text="Switch To  Login" textFill="#a11616">
+         <font>
+            <Font name="Bookman Old Style" size="23.0" />
+         </font>
+      </Button>
+      <Label fx:id="namelabel" alignment="CENTER" layoutY="91.0" prefHeight="35.0" prefWidth="690.0">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

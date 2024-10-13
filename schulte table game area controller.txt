@@ -1,0 +1,352 @@
+package org.example.schultetable;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
+//import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import java.util.ArrayList;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+public class GameareaController {
+    @FXML
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    @FXML
+    private Button bt1;
+
+    @FXML
+    private Button bt2;
+
+    @FXML
+    private Button bt3;
+
+    @FXML
+    private Button bt4;
+
+    @FXML
+    private Button bt5;
+
+    @FXML
+    private Button bt6;
+
+    @FXML
+    private Button bt7;
+
+    @FXML
+    private Button bt8;
+
+    @FXML
+    private Button bt9;
+
+    @FXML
+    private Button bt10;
+
+    @FXML
+    private Button bt11;
+
+    @FXML
+    private Button bt12;
+
+    @FXML
+    private Button bt13;
+
+    @FXML
+    private Button bt14;
+
+    @FXML
+    private Button bt15;
+
+    @FXML
+    private Button bt16;
+
+    @FXML
+    private Button bt17;
+
+    @FXML
+    private Button bt18;
+
+    @FXML
+    private Button bt19;
+
+    @FXML
+    private Button bt20;
+    @FXML
+    private Button bt21;
+
+    @FXML
+    private Button bt22;
+
+    @FXML
+    private Button bt23;
+
+    @FXML
+    private Button bt24;
+
+    @FXML
+    private Button bt25;
+
+    @FXML
+    private Button bt26;
+
+    @FXML
+    private Button bt27;
+
+    @FXML
+    private Button bt28;
+
+    @FXML
+    private Button bt29;
+
+    @FXML
+    private Button bt30;
+    @FXML
+    private Button bt31;
+
+    @FXML
+    private Button bt32;
+
+    @FXML
+    private Button bt33;
+
+    @FXML
+    private Button bt34;
+
+    @FXML
+    private Button bt35;
+
+    @FXML
+    private Button bt36;
+
+    @FXML
+    private Button ready;
+
+    @FXML
+    private Button back;
+    @FXML
+    private Timeline timeline;
+    @FXML
+    private Label timerLabel;
+
+    private int expectednumber=1;
+
+
+//    @FXML
+//    private Button setTextButton;
+
+    private List<Button> buttons;
+    private Random random = new Random();
+    private int secondsRemaining = 60;
+
+
+
+
+    @FXML
+    private void setTextAndColorOnButtons(ActionEvent event)throws IOException {
+
+        // Determine which button was clicked
+        Button clickedButton = (Button) event.getSource();
+
+        // Get the text of the clicked button
+        String buttonText = clickedButton.getText();
+
+
+//        System.out.println("Button clicked: " + buttonText);
+        int count=0;
+//        String[] strarray = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35"};
+
+
+
+            if (buttonText.equals(String.valueOf(expectednumber))) {
+
+//                System.out.println(expectednumber+"Correct Sequence -->> ");
+                expectednumber++;
+            }else{
+//                System.out.println("INCorrect Sequence -->> ");
+//                land to scorecard
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("scorecard.fxml"));
+                root = loader.load();
+
+                scorecardController scorecardController = loader.getController();
+                scorecardController.displayScore(expectednumber-1);
+
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                String css = this.getClass().getResource("login.css").toExternalForm();
+                scene.getStylesheets().add(css);
+                stage.setScene(scene);
+
+                stage.show();
+
+
+            }
+
+
+//        System.out.println("Score -->> "+count);
+        // Set random text and color on each button in a loop
+
+
+
+        // Generate unique random text and color for each button
+        List<Integer> numbers = generateUniqueNumbers(1, 36);
+
+        for (int i = 0; i < buttons.size(); i++) {
+            Button button = buttons.get(i);
+
+            // Set random text
+            int randomIndex = random.nextInt(numbers.size());
+            int randomText = numbers.get(randomIndex);
+            numbers.remove(randomIndex); // Remove used number to ensure uniqueness
+            button.setText(String.valueOf(randomText));
+
+            // Generate random color
+            Color randomColor = generateRandomColor();
+            button.setTextFill(randomColor);
+            button.setStyle("-fx-background-color: " + colorToHex(randomColor) + "; -fx-text-fill: black;");
+        }
+
+
+    }
+
+
+    // Helper method to generate a list of unique numbers within a range
+    private List<Integer> generateUniqueNumbers(int min, int max) {
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = min; i <= max; i++) {
+            numbers.add(i);
+        }
+        return numbers;
+    }
+    @FXML
+    private void handleButtonAction(ActionEvent event) {
+        // Determine which button was clicked
+        Button clickedButton = (Button) event.getSource();
+
+        // Get the text of the clicked button
+        String buttonText = clickedButton.getText();
+        System.out.println("Button clicked: " + buttonText);
+    }
+
+
+    // Helper method to generate a random color
+    private Color generateRandomColor() {
+        return Color.rgb(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+    }
+
+    // Helper method to convert Color to hex string
+    private String colorToHex(Color color) {
+        return String.format("#%02X%02X%02X",
+                (int) (color.getRed() * 255),
+                (int) (color.getGreen() * 255),
+                (int) (color.getBlue() * 255));
+    }
+
+
+
+
+    @FXML
+    public void changeButtonText(ActionEvent e)throws Exception{
+        startTimer();
+        for(int i=0;i<36;i++){
+//              buttons.get(i).setText(Integer.toString(i+1));
+            Button button = buttons.get(i);
+            button.setText(String.valueOf(i + 1));
+            button.setTextFill(Color.RED); // Example: Set text color to red
+            button.setStyle("-fx-background-color: orange; -fx-text-fill: black;"); // Example: Set background color to light blue
+
+//            button.setVisible(false);
+
+        }
+//        back.setVisible(false);
+        ready.setVisible(false);
+    }
+    @FXML
+    public void initialize() {
+        // Initial setup if needed
+        buttons = List.of(bt1, bt2, bt3, bt4, bt5,bt6,bt7,bt8,bt9,bt10,bt11,bt12
+        ,bt13,bt14,bt15,bt16,bt17,bt18,bt19,bt20,bt21,bt22,bt23,bt24,bt25,bt26,bt27,bt28,bt29,bt30,bt31,bt32,bt33,bt34,bt35,bt36);
+
+        // Initialize the timeline for the timer
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            // Update timer label every second
+            updateTimerLabel();
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE); // Run indefinitely
+        this.stage=stage;
+    }
+
+
+
+
+    public void backtomain(ActionEvent e)throws IOException {
+        root= FXMLLoader.load(getClass().getResource("login.fxml"));
+        stage =(Stage)((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        String css=this.getClass().getResource("login.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+
+
+
+//  Timer
+
+
+    private void startTimer() {
+        timeline.play(); // Start the timeline (timer)
+    }
+    private void updateTimerLabel(){
+        // Update timer label with remaining seconds
+        timerLabel.setText("Timer: " + secondsRemaining + "s");
+        secondsRemaining--;
+
+        if (secondsRemaining == 0){
+
+            timeline.stop(); // Stop the timer when it reaches 0 or below
+            timerLabel.setText("Timer: Time's up!");
+            DisplayScoreTimeUP();
+            // Add any additional logic you need when the timer expires
+            //land to score card
+
+        }
+    }
+
+    public void DisplayScoreTimeUP(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("scorecard.fxml"));
+            root = loader.load();
+            scorecardController scorecardController = loader.getController();
+            scorecardController.displayScore(expectednumber-1);
+            Scene scene = new Scene(root);
+            stage = (Stage) timerLabel.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+}
+
+
+//stage = (Stage) ((Node).getSource()) e.getScene().getWindow();
